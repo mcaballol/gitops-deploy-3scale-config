@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: deploy-3scale-dev-backends
+  name: deploy-3scale-dev-products
   namespace: openshift-gitops
 spec:
   generators:
@@ -13,7 +13,7 @@ spec:
         requeueAfterSeconds: 180
   template:
     metadata:
-      name: deploy-3scale-dev-backends-{{name}}
+      name: deploy-3scale-dev-products-{{name}}
       labels:
         velero.io/exclude-from-backup: "true"
     spec:
@@ -21,10 +21,10 @@ spec:
       source:
         repoURL: https://github.com/mcaballol/gitops-deploy-3scale-config.git
         targetRevision: main
-        path: helms/3scale-helm-backend
+        path: helms/3scale-helm-product
         helm:
           valueFiles: 
-          - /credito-web/config/backends/values.yaml
+          - /credito-web/config/products/values.yaml
       destination:
         namespace: 3scale-dev
         server: "{{server}}"
