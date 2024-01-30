@@ -1,0 +1,70 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: deploy-3scale-dev-backends
+  namespace: openshift-gitops
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: argo-placement
+        requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: deploy-3scale-dev-backends-{{name}}
+      labels:
+        velero.io/exclude-from-backup: "true"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/mcaballol/gitops-deploy-3scale-config.git
+        targetRevision: main
+        path: helms/3scale-helm-backend
+        helm:
+          valueFiles: 
+          - /credito-web/config/backends/values.yaml
+      destination:
+        namespace: 3scale-dev
+        server: "{{server}}"
+      syncPolicy:
+        automated:
+          selfHeal: false
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+          - PruneLast=false
+
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app01
+  namespace: openshift-gitops
+spec:
+  destination:
+    name: ''
+    namespace: poc-clh
+    server: 'https://kubernetes.default.svc'
+  source: 
+    path: helm-template
+    repoURL: https://github.com/mcaballol/poc-gitops-helm-templates.git
+    targetRevision: main
+    helm:
+      valueFiles:
+      - values.yaml
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    retry:
+      limit: 10
+    managedNamespaceMetadata:
+      labels:
+        argocd.argoproj.io/managed-by: openshift-gitops
+      # annotations:
+      #   argocd.argoproj.io/sync-wave: "0"
+    syncOptions:
+    - CreateNamespace=true
