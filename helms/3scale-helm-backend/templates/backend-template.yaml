@@ -15,4 +15,14 @@ spec:
   methods: 
     {{ regexReplaceAll "-" $backend.name "_" }}:
       friendlyName: {{ regexReplaceAll "-" $backend.name "_" }}
+  {{- if or $backend.mappingRules $backend.mappingRules }}
+  mappingRules:
+    {{- range $mrule := $backend.mappingRules }}
+    - httpMethod: {{ $mrule.httpMethod }}
+      pattern: {{ $mrule.pattern }}
+      metricMethodRef: {{ regexReplaceAll "-" $backend.name "_" }}:
+      increment: 1
+      last: false
+    {{- end }}
+  {{- end }}
 {{- end }}
