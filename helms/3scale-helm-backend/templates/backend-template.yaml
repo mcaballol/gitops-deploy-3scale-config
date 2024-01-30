@@ -20,9 +20,10 @@ spec:
     {{- range $mrule := $backend.mappingRules }}
     - httpMethod: {{ $mrule.httpMethod }}
       pattern: {{ $mrule.pattern }}
-      metricMethodRef: {{ regexReplaceAll "-" $backend.name "_" }}:
+      metricMethodRef: {{ regexReplaceAll "-" $backend.name "_" }}
       increment: 1
       last: false
     {{- end }}
+  
   {{- end }}
 {{- end }}
