@@ -3,7 +3,7 @@
 apiVersion: capabilities.3scale.net/v1beta1
 kind: Backend
 metadata:
-  name: {{ regexReplaceAll "_" $backend.name "-" }}
+  name: {{ regexReplaceAll "_" (lower $backend.name) "-" }}
 spec:
   description: ""
   name: {{ regexReplaceAll "-" $backend.name "_" }}
