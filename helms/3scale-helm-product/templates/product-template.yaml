@@ -1,0 +1,44 @@
+{{- range $product := .Values.products }}
+---
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Product
+metadata:
+  name: {{ $product.name }}
+spec:
+  applicationPlans:
+    plan_basic:
+      limits:
+        - metricMethodRef:
+            systemName: hits
+          period: day
+          value: 30
+      name: Basic
+    plan_unlimited:
+      name: Unlimited
+  providerAccountRef:
+    name: {{ $.Values.tenant_secret }}
+    #namespace: 3scale
+  name: {{ $product.name }}
+  systemName: {{ $product.name }}
+  description: {{ $product.description }}
+  backendUsages:
+    {{- toYaml $product.backendUsages | nindent 4 }}
+  deployment:
+    apicastSelfManaged:
+      stagingPublicBaseURL: "https://ext-stg-api-creditoagil.losheroes.cl:443"
+      productionPublicBaseURL: "https://ext-api-creditoagil.losheroes.cl:443"
+      authentication:
+        oidc:
+          issuerType: "keycloak"
+          issuerEndpoint: "https://3scale-admin-prod-ds:df11bb2c-d74c-458d-862a-18c318c9685b@sso.losheroes.cl/auth/realms/cred-web"
+          authenticationFlow:
+            standardFlowEnabled: true
+            implicitFlowEnabled: false
+            serviceAccountsEnabled: false
+            directAccessGrantsEnabled: false
+        jwtClaimWithClientID: "azp"
+        jwtClaimWithClientIDType: "plain"
+        credentials: "headers"
+        security: 
+          secretToken: Shared_secret_sent_from_proxy_to_API_backend_5807a0b75ff275bc
+{{- end }}

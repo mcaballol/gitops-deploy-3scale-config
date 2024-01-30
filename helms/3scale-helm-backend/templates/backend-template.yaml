@@ -1,0 +1,15 @@
+{{- range $backend := .Values.backends }}
+---
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Backend
+metadata:
+  name: {{ $backend.name }}
+spec:
+  description: ""
+  name: {{ $backend.name }}
+  privateBaseURL: '{{ $backend.privateBaseURL }}'
+  providerAccountRef:
+    name: {{ $.Values.tenant_secret }}
+    #namespace: 3scale
+  systemName: {{ $backend.name }}
+{{- end }}

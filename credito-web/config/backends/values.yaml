@@ -1,0 +1,48 @@
+##############################################################
+### Para crear de los recursos, ejecutar 'helm template .' ###
+##############################################################
+
+tenant_secret: dev-tenant-secret
+backends:
+  - name: apiGenerica_simulador_credito
+    privateBaseURL: 'http://apicanonicallh-servicio-simulador-credito-git.prod-api-los-heroes.svc.cluster.local:8080/v1/simulacion'
+
+  - name: credweb_api_pdf_convertions
+    privateBaseURL: 'http://credweb-node-pdf.prod-credito-web.svc.cluster.local:8080/api/v1/convert-docs'  
+
+  - name: credweb_fis_back
+    privateBaseURL: 'http://credweb-ser-fis-back-doc.prod-credito-web.svc.cluster.local:8080/v1/back'
+
+  - name: credweb_fis_backact
+    privateBaseURL: 'http://credweb-servicio-back.prod-credito-web.svc.cluster.local:8080/v1/backAct'
+  
+  - name: credweb_fis_cargararchivo
+    privateBaseURL: 'http://credweb-ser-fis-upload.prod-credito-web.svc.cluster.local:8080/v1/credito/upload'
+  
+  - name: credweb_fis_clientes
+    privateBaseURL: 'http://credweb-servicio-fis-clientes.prod-credito-web.svc.cluster.local:8080/v1/cliente'
+  
+  - name: credweb_fis_download
+    privateBaseURL: 'http://credweb-ser-fis-download.prod-credito-web.svc.cluster.local:8080/v1/download'
+  
+  - name: credweb_fis_registrocredito
+    privateBaseURL: 'http://credweb-ser-fis-registro.prod-credito-web.svc.cluster.local:8080/v1/credito'
+  
+  - name: credweb_fis_serv_btt
+    privateBaseURL: 'http://credweb-servicio-btt.prod-credito-web.svc.cluster.local:8080/v1'
+
+  - name: credweb_framework_moleculer
+    privateBaseURL: 'http://credweb-framework-moleculer.prod-credito-web.svc.cluster.local:8080/api/general-user-data'
+ 
+  - name: credweb_moleculer_orq
+    privateBaseURL: 'http://credweb-servicio-moleculer-orq.prod-credito-web.svc.cluster.local:8080/api/orq'
+  
+  - name: credweb_node_gateway
+    privateBaseURL: 'http://node-gateway.prod-credito-web.svc.cluster.local:8080/api/v1'
+ 
+  - name: credweb_service_node
+    privateBaseURL: 'http://credweb-test-framework-node.prod-credito-web.svc.cluster.local:8080/api'
+ 
+  - name: credweb_servicio_fis_simuladorcreditoappfin
+    privateBaseURL: 'http://credweb-servicio-fis-simuladorcreditoappfin.prod-credito-web.svc.cluster.local:8080/v1/simulacion'
+  

@@ -1,0 +1,37 @@
+##############################################################
+### Para crear de los recursos, ejecutar 'helm template .' ###
+##############################################################
+
+tenant_secret: dev-tenant-secret
+products:
+- name: creditoagil_ext
+  description: Proyecto dirigido a DS
+  backendUsages:
+    credweb_fis_back:
+      path: /v1/back
+    credweb_fis_backact:
+      path: /v1/backAct
+    credweb_fis_cargararchivo:
+      path: /v1/credito/upload
+    credweb_fis_clientes:
+      path: /v1/cliente
+    credweb_fis_download:
+      path: /v1/download
+    credweb_fis_registrocredito:
+      path: /v1/credito
+    credweb_fis_serv_btt:
+      path: /v1
+    credweb_node_gateway:
+      path: /api/v1
+    credweb_api_pdf_convertions:
+      path: /api/v1/convert-docs
+    credweb_framework_moleculer:
+      path: /api/general-user-data
+    credweb_service_node:
+      path: /api
+    credweb_servicio_fis_simuladorcreditoappfin:
+      path: /v1/simulacion
+    credweb-moleculer-orq:
+      path: /api/orq
+    apiGenerica-simuladorcrédito:
+      path: /simulacion-credito
