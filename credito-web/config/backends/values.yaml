@@ -24,7 +24,33 @@ backends:
     mappingRules:
       - httpMethod: GET
         pattern: "/{rutCliente}/datosPersonales"
-      
+      - httpMethod: GET
+        pattern: "/{rutCliente}/direccion"   
+      - httpMethod: GET
+        pattern: "/{rutCliente}/contacto"
+      - httpMethod: GET
+        pattern: "/region"
+      - httpMethod: GET
+        pattern: "/comuna"
+      - httpMethod: POST
+        pattern: "/actualizar/direccion"
+      - httpMethod: POST
+        pattern: "/actualizar"
+      - httpMethod: GET
+        pattern: "/ciudad"
+      - httpMethod: GET
+        pattern: "/tipocontrato"
+      - httpMethod: GET
+        pattern: "/tiporenta"
+      - httpMethod: GET
+        pattern: "/{rutCliente}/rentas?matrizEmpresa={matriz}"
+      - httpMethod: GET
+        pattern: "/{rutCliente}/empresas"
+      - httpMethod: GET
+        pattern: "/nacionalidad"
+      - httpMethod: GET
+        pattern: "/actualizar/renta"      
+
   - name: credweb_fis_download
     privateBaseURL: 'http://credweb-ser-fis-download.prod-credito-web.svc.cluster.local:8080/v1/download'
   
