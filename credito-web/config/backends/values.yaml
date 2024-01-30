@@ -21,7 +21,10 @@ backends:
   
   - name: credweb_fis_clientes
     privateBaseURL: 'http://credweb-servicio-fis-clientes.prod-credito-web.svc.cluster.local:8080/v1/cliente'
-  
+    mappingRules:
+      - httpMethod: GET
+        pattern: "/{rutCliente}/datosPersonales"
+      
   - name: credweb_fis_download
     privateBaseURL: 'http://credweb-ser-fis-download.prod-credito-web.svc.cluster.local:8080/v1/download'
   
