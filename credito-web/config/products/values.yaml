@@ -6,6 +6,8 @@ tenant_secret: dev-tenant-secret
 products:
 - name: creditoagil_ext
   description: Proyecto dirigido a DS
+  stagingPublicBaseURL: "https://ext-stg-api-creditoagil.losheroes.cl:443"
+  productionPublicBaseURL: "https://ext-api-creditoagil.losheroes.cl:443"
   backendUsages:
     credweb_fis_back:
       path: /v1/back

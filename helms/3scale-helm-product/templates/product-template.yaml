@@ -25,8 +25,8 @@ spec:
     {{- toYaml $product.backendUsages | nindent 4 }}
   deployment:
     apicastSelfManaged:
-      stagingPublicBaseURL: "https://ext-stg-api-creditoagil.losheroes.cl:443"
-      productionPublicBaseURL: "https://ext-api-creditoagil.losheroes.cl:443"
+      stagingPublicBaseURL: {{ $product.stagingPublicBaseURL }}
+      productionPublicBaseURL: {{ $product.productionPublicBaseURL }}
       authentication:
         oidc:
           issuerType: "keycloak"
@@ -36,9 +36,9 @@ spec:
             implicitFlowEnabled: false
             serviceAccountsEnabled: false
             directAccessGrantsEnabled: false
-        jwtClaimWithClientID: "azp"
-        jwtClaimWithClientIDType: "plain"
-        credentials: "headers"
-        security: 
-          secretToken: Shared_secret_sent_from_proxy_to_API_backend_5807a0b75ff275bc
+          jwtClaimWithClientID: "azp"
+          jwtClaimWithClientIDType: "plain"
+          credentials: "headers"
+          security: 
+            secretToken: Shared_secret_sent_from_proxy_to_API_backend_5807a0b75ff275bc
 {{- end }}
