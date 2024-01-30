@@ -31,7 +31,7 @@ products:
       path: /api
     credweb_servicio_fis_simuladorcreditoappfin:
       path: /v1/simulacion
-    credweb-moleculer-orq:
+    credweb_moleculer_orq:
       path: /api/orq
-    apiGenerica-simuladorcrédito:
+    apiGenerica_simulador_credito:
       path: /simulacion-credito
