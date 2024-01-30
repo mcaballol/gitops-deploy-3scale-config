@@ -14,5 +14,5 @@ spec:
   systemName: {{ regexReplaceAll "-" $backend.name "_" }}
   methods: 
     {{ regexReplaceAll "-" $backend.name "_" }}:
-      name: {{ regexReplaceAll "-" $backend.name "_" }}
+      friendlyName: {{ regexReplaceAll "-" $backend.name "_" }}
 {{- end }}
