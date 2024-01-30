@@ -6,8 +6,21 @@ tenant_secret: dev-tenant-secret
 products:
 - name: creditoagil_ext
   description: Proyecto dirigido a DS
-  stagingPublicBaseURL: "https://ext-stg-api-creditoagil.losheroes.cl:443"
-  productionPublicBaseURL: "https://ext-api-creditoagil.losheroes.cl:443"
+  stagingPublicBaseURL: "https://ext-stg-api-creditoagil.example.cl:443"
+  productionPublicBaseURL: "https://ext-api-creditoagil.example.cl:443"
+  oidc:
+    issuerType: "keycloak"
+    issuerEndpoint: "https://3scale-admin-prod-ds:df11bb2c-d74c-458d-862a-blahblah@sso.example.cl/auth/realms/cred-web"
+    authenticationFlow:
+      standardFlowEnabled: true
+      implicitFlowEnabled: false
+      serviceAccountsEnabled: false
+      directAccessGrantsEnabled: false
+    jwtClaimWithClientID: "azp"
+    jwtClaimWithClientIDType: "plain"
+    credentials: "headers"
+    security: 
+      secretToken: Shared_secret_sent_from_proxy_to_API_backend_5807a0b75ff275bc
   backendUsages:
     credweb_fis_back:
       path: /v1/back

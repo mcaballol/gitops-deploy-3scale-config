@@ -29,16 +29,5 @@ spec:
       productionPublicBaseURL: {{ $product.productionPublicBaseURL }}
       authentication:
         oidc:
-          issuerType: "keycloak"
-          issuerEndpoint: "https://3scale-admin-prod-ds:df11bb2c-d74c-458d-862a-18c318c9685b@sso.losheroes.cl/auth/realms/cred-web"
-          authenticationFlow:
-            standardFlowEnabled: true
-            implicitFlowEnabled: false
-            serviceAccountsEnabled: false
-            directAccessGrantsEnabled: false
-          jwtClaimWithClientID: "azp"
-          jwtClaimWithClientIDType: "plain"
-          credentials: "headers"
-          security: 
-            secretToken: Shared_secret_sent_from_proxy_to_API_backend_5807a0b75ff275bc
+            {{- toYaml $product.oidc | nindent 10 }}
 {{- end }}
