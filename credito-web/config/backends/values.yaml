@@ -48,7 +48,7 @@ backends:
         pattern: "/{rutCliente}/empresas"
       - httpMethod: GET
         pattern: "/nacionalidad"
-      - httpMethod: GET
+      - httpMethod: PUT
         pattern: "/actualizar/renta"      
 
   - name: credweb_fis_download
