@@ -4,6 +4,9 @@
 
 tenant_secret: dev-tenant-secret
 backends:
+  - name: apiGenerica_simulador_credito_v2
+    privateBaseURL: 'http://apicanonicallh-servicio-simulador-credito-git.prod-api-los-heroes.svc.cluster.local:8080/v1/simulacion'
+
   - name: apiGenerica_simulador_credito
     privateBaseURL: 'http://apicanonicallh-servicio-simulador-credito-git.prod-api-los-heroes.svc.cluster.local:8080/v1/simulacion'
 

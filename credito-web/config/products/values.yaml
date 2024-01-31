@@ -58,6 +58,7 @@ products:
     apiGenerica_simulador_credito:
       path: /simulacion-credito
   #https://access.redhat.com/documentation/es-es/red_hat_3scale_api_management/2.9/html/administering_the_api_gateway/apicast_policies#authentication_caching
+  # el orden del arregle es tal cual como aparece en 3scale
   policies:
 
     - configuration: {}
