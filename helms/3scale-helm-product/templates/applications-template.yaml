@@ -2,6 +2,8 @@
 ---
 kind: Application
 apiVersion: capabilities.3scale.net/v1beta1
+annotations:
+  argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 metadata:
   name: application-{{ regexReplaceAll "_" (lower $product.name) "-" }}-{{ regexReplaceAll "_" $product.plan "-" }}
 spec:
