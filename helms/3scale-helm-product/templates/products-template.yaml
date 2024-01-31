@@ -24,4 +24,17 @@ spec:
       authentication:
         oidc:
             {{- toYaml $product.oidc | nindent 10 }}
+
+  policies:
+    - configuration:
+      allow_headers:
+        - "Access-Control-Allow-Origin"
+        - "Authorization"
+      enabled: true
+      name: cors
+      version: builtin
+    - configuration: {}
+      enabled: true
+      name: apicast
+      version: builtin
 {{- end }}
