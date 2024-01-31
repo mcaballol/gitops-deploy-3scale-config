@@ -6,6 +6,7 @@ tenant_secret: dev-tenant-secret
 products:
 - name: creditoagil_ext
   description: Proyecto dirigido a DS
+  plan: creditoagil-ds
   stagingPublicBaseURL: "https://ext-stg-api-creditoagil.example.cl:443"
   productionPublicBaseURL: "https://ext-api-creditoagil.example.cl:443"
   oidc:

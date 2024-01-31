@@ -6,15 +6,9 @@ metadata:
   name: {{ regexReplaceAll "_" (lower $product.name) "-" }}
 spec:
   applicationPlans:
-    plan_basic:
-      limits:
-        - metricMethodRef:
-            systemName: hits
-          period: day
-          value: 30
-      name: Basic
-    plan_unlimited:
-      name: Unlimited
+    {{ regexReplaceAll "-" $product.plan "_" }}: 
+      name: {{ $product.plan }}: 
+      published: true
   providerAccountRef:
     name: {{ $.Values.tenant_secret }}
     #namespace: 3scale
