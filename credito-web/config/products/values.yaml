@@ -3,6 +3,12 @@
 ##############################################################
 
 tenant_secret: dev-tenant-secret
+account:
+  email: adminapp@example.cl
+  orgName: EXPL
+  username: EXPLUSER
+  password: EXPLPASS
+
 products:
 - name: creditoagil_ext
   description: Proyecto dirigido a DS
