@@ -15,7 +15,9 @@ backends:
 
   - name: credweb_fis_back
     privateBaseURL: 'http://credweb-ser-fis-back-doc.prod-credito-web.svc.cluster.local:8080/v1/back'
-
+    mappingRules:
+      - httpMethod: GET
+        pattern: "/{rutCliente}/datosPersonales"
   - name: credweb_fis_backact
     privateBaseURL: 'http://credweb-servicio-back.prod-credito-web.svc.cluster.local:8080/v1/backAct'
   
