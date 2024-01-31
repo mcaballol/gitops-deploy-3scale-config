@@ -57,3 +57,22 @@ products:
       path: /api/orq
     apiGenerica_simulador_credito:
       path: /simulacion-credito
+  policies:
+    - configuration:
+        allow_headers:
+          - "Access-Control-Allow-Origin"
+          - "Authorization"
+          - "Content-Type"
+          - "LH-ClientReqTimestamp"
+          - "authorization"
+          - "LH-ContentType"
+          - "LH-Syscode"
+          - "LH-EnterpriseCode"
+          - "LH-CountryCode"
+      enabled: true
+      name: cors
+      version: builtin
+    - configuration: {}
+      enabled: true
+      name: apicast
+      version: builtin
