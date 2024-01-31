@@ -1,0 +1,18 @@
+{{- range $product := .Values.products }}
+---
+kind: Application
+apiVersion: capabilities.3scale.net/v1beta1
+metadata:
+  name: application-{{ regexReplaceAll "_" (lower $product.name) "-" }}-{{ regexReplaceAll "_" $product.plan "-" }}
+spec:
+  accountCR:
+   name: {{ regexReplaceAll "_" (lower $.Values.account.orgName) "-" }}
+  applicationPlanName: {{ regexReplaceAll "-" $product.plan "_" }} 
+  description: '{{ regexReplaceAll "_" (lower $product.name) "-" }} - {{ $product.plan }} application'
+  name: {{ regexReplaceAll "_" (lower $product.name) "-" }}-{{ $product.plan }}
+  productCR:
+    name: {{ regexReplaceAll "_" (lower $product.name) "-" }}
+  suspend: false
+  providerAccountRef:
+    name: {{ $.Values.tenant_secret }}
+{{- end }}
