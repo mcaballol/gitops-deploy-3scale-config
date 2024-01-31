@@ -3,23 +3,23 @@
 kind: DeveloperAccount
 apiVersion: capabilities.3scale.net/v1beta1
 metadata:
-  name: {{ regexReplaceAll "_" (lower $.Values.acount.orgName) "-" }}
+  name: {{ regexReplaceAll "_" (lower $.Values.account.orgName) "-" }}
 spec:
-  orgName: {{ $.Values.acount.orgName }}
+  orgName: {{ $.Values.account.orgName }}
   providerAccountRef:
     name: {{ $.Values.tenant_secret }}
 ---
 kind: DeveloperUser
 apiVersion: capabilities.3scale.net/v1beta1
 metadata:
-  name: {{ regexReplaceAll "_" (lower $.Values.acount.username) "-" }}
+  name: {{ regexReplaceAll "_" (lower $.Values.account.username) "-" }}
 spec:
   developerAccountRef:
-    name:  {{ regexReplaceAll "_" (lower $.Values.acount.orgName) "-" }}
-  email: {{ $.Values.acount.email }}
+    name:  {{ regexReplaceAll "_" (lower $.Values.account.orgName) "-" }}
+  email: {{ $.Values.account.email }}
   role: admin
-  username: {{ $.Values.acount.username }}
+  username: {{ $.Values.account.username }}
   passwordCredentialsRef:
-    name: {{ regexReplaceAll "_" (lower $.Values.acount.username) "-" }}-account-secret
+    name: {{ regexReplaceAll "_" (lower $.Values.account.username) "-" }}-account-secret
   providerAccountRef:
     name: {{ $.Values.tenant_secret }}
