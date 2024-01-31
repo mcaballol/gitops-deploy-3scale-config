@@ -81,3 +81,75 @@ products:
       enabled: true
       name: cors
       version: builtin
+
+- name: creditoagil-ext2
+  description: Proyecto dirigido a DS
+  plan: creditoagil-ds
+  stagingPublicBaseURL: "https://ext-stg-api-creditoagil.example.cl:443"
+  productionPublicBaseURL: "https://ext-api-creditoagil.example.cl:443"
+  oidc:
+    issuerType: "keycloak"
+    issuerEndpoint: "https://3scale-admin-prod-ds:df11bb2c-d74c-458d-862a-blahblah@sso.example.cl/auth/realms/cred-web"
+    authenticationFlow:
+      standardFlowEnabled: true
+      implicitFlowEnabled: false
+      serviceAccountsEnabled: false
+      directAccessGrantsEnabled: false
+    jwtClaimWithClientID: "azp"
+    jwtClaimWithClientIDType: "plain"
+    credentials: "headers"
+    security: 
+      secretToken: Shared_secret_sent_from_proxy_to_API_backend_5807a0b75ff275bc
+  backendUsages:
+    credweb_fis_back:
+      path: /v1/back
+    credweb_fis_backact:
+      path: /v1/backAct
+    credweb_fis_cargararchivo:
+      path: /v1/credito/upload
+    credweb_fis_clientes:
+      path: /v1/cliente
+    credweb_fis_download:
+      path: /v1/download
+    credweb_fis_registrocredito:
+      path: /v1/credito
+    credweb_fis_serv_btt:
+      path: /v1
+    credweb_node_gateway:
+      path: /api/v1
+    credweb_api_pdf_convertions:
+      path: /api/v1/convert-docs
+    credweb_framework_moleculer:
+      path: /api/general-user-data
+    credweb_service_node:
+      path: /api
+    credweb_servicio_fis_simuladorcreditoappfin:
+      path: /v1/simulacion
+    credweb_moleculer_orq:
+      path: /api/orq
+    apiGenerica_simulador_credito:
+      path: /simulacion-credito
+  #https://access.redhat.com/documentation/es-es/red_hat_3scale_api_management/2.9/html/administering_the_api_gateway/apicast_policies#authentication_caching
+  # el orden del arregle es tal cual como aparece en 3scale
+  policies:
+
+    - configuration: {}
+      enabled: true
+      name: apicast
+      version: builtin
+
+
+    - configuration:
+        allow_headers:
+          - "Access-Control-Allow-Origin"
+          - "Authorization"
+          - "Content-Type"
+          - "LH-ClientReqTimestamp"
+          - "authorization"
+          - "LH-ContentType"
+          - "LH-Syscode"
+          - "LH-EnterpriseCode"
+          - "LH-CountryCode"
+      enabled: true
+      name: cors
+      version: builtin  
