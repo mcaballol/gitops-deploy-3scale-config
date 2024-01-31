@@ -10,7 +10,7 @@ account:
   password: EXPLPASS
 
 products:
-- name: creditoagil_ext
+- name: creditoagil-ext
   description: Proyecto dirigido a DS
   plan: creditoagil-ds
   stagingPublicBaseURL: "https://ext-stg-api-creditoagil.example.cl:443"
@@ -57,7 +57,15 @@ products:
       path: /api/orq
     apiGenerica_simulador_credito:
       path: /simulacion-credito
+  #https://access.redhat.com/documentation/es-es/red_hat_3scale_api_management/2.9/html/administering_the_api_gateway/apicast_policies#authentication_caching
   policies:
+
+    - configuration: {}
+      enabled: true
+      name: apicast
+      version: builtin
+
+
     - configuration:
         allow_headers:
           - "Access-Control-Allow-Origin"
@@ -71,8 +79,4 @@ products:
           - "LH-CountryCode"
       enabled: true
       name: cors
-      version: builtin
-    - configuration: {}
-      enabled: true
-      name: apicast
       version: builtin
